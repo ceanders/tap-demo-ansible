@@ -27,9 +27,7 @@
         memory: "{{ rhv_vm_memory }}"
         comment: "{{ rhv_vm_comment }} Tower user-job: {{ tower_user_name }}-{{ tower_job_id }}"
         wait: True
-        nics:
-          - name: "{{ rhv_vm_nic_name }}"
-            profile_name: "{{ rhv_vm_nic_profile }}"
+
 
     - name: Revoke the SSO token we generated for provisioning the Virtual Machine
       ovirt_auth:
