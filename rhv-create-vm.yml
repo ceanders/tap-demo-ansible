@@ -5,6 +5,14 @@
 
   tasks:
 
+    - name: Obtain SSO token for authentication to Red Hat Virtualization
+      no_log: false
+      ovirt_auth:
+        url: '{{ lookup("env", "OVIRT_URL") }}'
+        username: '{{ lookup("env", "OVIRT_USERNAME") }}'
+        password: '{{ lookup("env", "OVIRT_PASSWORD") }}'
+        insecure: true
+
     - name: Create Virtual Machine
       ovirt_vm:
         auth: "{{ ovirt_auth }}"
