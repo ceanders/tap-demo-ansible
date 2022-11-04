@@ -1,3 +1,0 @@
-krb5-libs [platform:rpm]
-krb5-workstation [platform:rpm]
-nmap-ncat [platform:rpm]
