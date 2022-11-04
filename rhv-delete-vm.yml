@@ -21,7 +21,7 @@
         auth: "{{ ovirt_auth }}"
         state: absent
         cluster: "{{ rhv_vm_cluster }}"
-        name: "{{ rhv_vm_name + '.' + rhv_vm_domain }}"
+        name: "{{ rhv_vm_name }}"
 
 
 
