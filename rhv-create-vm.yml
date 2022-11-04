@@ -3,6 +3,9 @@
   connection: local
   serial: 1
 
+  collections:
+    - redhat.rhv
+
   tasks:
 
     - name: Obtain SSO token for authentication to Red Hat Virtualization
@@ -16,7 +19,7 @@
     - name: Create Virtual Machine
       ovirt_vm:
         auth: "{{ ovirt_auth }}"
-        state: "{{ rhv_vm_state }}"
+        state: running
         name: "{{ rhv_vm_name + '.' + rhv_vm_domain }}"
         template: "{{ rhv_vm_template }}"
         cluster: "{{ rhv_vm_cluster }}"
@@ -28,5 +31,8 @@
           - name: "{{ rhv_vm_nic_name }}"
             profile_name: "{{ rhv_vm_nic_profile }}"
 
-  collections:
-    - redhat.rhv
+    - name: Revoke the SSO token we generated for provisioning the Virtual Machine
+      ovirt_auth:
+        state: absent
+        ovirt_auth: "{{ ovirt_auth }}"
+
