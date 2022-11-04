@@ -19,3 +19,6 @@
         nics:
           - name: "{{ rhv_vm_nic_name }}"
             profile_name: "{{ rhv_vm_nic_profile }}"
+
+  collections:
+    - redhat.rhv
