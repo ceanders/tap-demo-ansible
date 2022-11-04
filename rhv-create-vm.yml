@@ -31,7 +31,7 @@
           - name: "{{ rhv_vm_nic_name }}"
             profile_name: "{{ rhv_vm_nic_profile }}"
         cloud_init:
-          host_name: "{{ rhv_vm_name }}
+          host_name: "{{ rhv_vm_name }}"
 
 
     - name: Revoke the SSO token we generated for provisioning the Virtual Machine
