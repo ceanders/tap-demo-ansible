@@ -8,10 +8,11 @@
     rhsm_username: "{{ vault_rhsm_username }}"
     rhsm_password: "{{ vault_rhsm_password }}"
 
+  tasks:
 
-- name: Register
-  redhat_subscription:
-    state: present
-    username: "{{ rhsm_username }}"
-    password: "{{ rhsm_password }}"
-    force_register: true
+    - name: Register
+      redhat_subscription:
+        state: present
+        username: "{{ rhsm_username }}"
+        password: "{{ rhsm_password }}"
+        force_register: true
