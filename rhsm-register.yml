@@ -9,9 +9,9 @@
     rhsm_password: "{{ vault_rhsm_password }}"
 
 
-- name: Register as user (joe_user) with password (somepass) and auto-subscribe to available content.
+- name: Register
   redhat_subscription:
     state: present
-    username: {{ rhsm_username }}
-    password: {{ rhsm_password }}
+    username: "{{ rhsm_username }}"
+    password: "{{ rhsm_password }}"
     force_register: true
