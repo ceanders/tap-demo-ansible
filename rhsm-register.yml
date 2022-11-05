@@ -8,6 +8,9 @@
     rhsm_username: "{{ vault_rhsm_username }}"
     rhsm_password: "{{ vault_rhsm_password }}"
 
+  collections:
+    - redhat_subscription
+
   tasks:
 
     - name: Register
