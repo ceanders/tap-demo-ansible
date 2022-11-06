@@ -1,4 +1,4 @@
-- name: UNRegiter to Red Hat Subscription Management Portal
+- name: Unregister to Red Hat Subscription Management portal
   hosts: all
 
   vars_files:
