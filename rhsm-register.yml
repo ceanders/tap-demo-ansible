@@ -19,3 +19,4 @@
         username: "{{ rhsm_username }}"
         password: "{{ rhsm_password }}"
         force_register: true
+        release: 8.6
