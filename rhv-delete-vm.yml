@@ -1,7 +1,6 @@
 - name: Create Virtual Machine
   hosts: localhost
   connection: local
-  serial: 1
 
   collections:
     - redhat.rhv
