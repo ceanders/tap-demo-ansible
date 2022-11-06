@@ -1,0 +1,6 @@
+- hosts: all
+
+  tasks:
+  
+    - name: Wait for system to become reachable
+      ansible.builtin.wait_for_connection:
