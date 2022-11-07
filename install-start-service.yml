@@ -1,8 +1,9 @@
+---
 - name: Install and start a package and service respectively 
   hosts: all
 
   tasks:
-    - name: Package installation. Note: prefix a package group with at sign!
+    - name: Package installation. Prefix a package group with at sign!
       yum:
         name: "{{ package_name }}"
         state: latest
