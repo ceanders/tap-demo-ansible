@@ -1,0 +1,17 @@
+---
+- name: Stop a service adn remove the package
+  hosts: all
+
+  tasks:
+
+    - name: Service stopped and disabled
+      service:
+        name: "{{ service_name }}"
+        state: stopped
+        enabled: false
+
+    - name: Package removal. Prefix a package group with at sign!
+      yum:
+        name: "{{ package_name }}"
+        state: absent
+

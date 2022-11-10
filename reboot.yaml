@@ -1,0 +1,9 @@
+- name: Reboot a host and wait for test command before moving on to next
+  hosts: all
+  serial: 1
+  become: yes
+
+  tasks:
+    - name: Reboot a host and wait for test command
+      reboot:
+        test_command: "{{ test_command }}"
