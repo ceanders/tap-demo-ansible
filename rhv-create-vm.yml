@@ -1,0 +1,40 @@
+- name: Create Virtual Machine
+  hosts: localhost
+  connection: local
+
+  collections:
+    - redhat.rhv
+
+  tasks:
+
+    - name: Obtain SSO token for authentication to Red Hat Virtualization
+      no_log: false
+      ovirt_auth:
+        url: '{{ lookup("env", "OVIRT_URL") }}'
+        username: '{{ lookup("env", "OVIRT_USERNAME") }}'
+        password: '{{ lookup("env", "OVIRT_PASSWORD") }}'
+        insecure: true
+
+    - name: Create Virtual Machine
+      ovirt_vm:
+        auth: "{{ ovirt_auth }}"
+        state: running
+        name: "{{ rhv_vm_name }}"
+        template: "{{ rhv_vm_template }}"
+        cluster: "{{ rhv_vm_cluster }}"
+        cpu_cores: "{{ rhv_vm_cpu_cores }}"
+        memory: "{{ rhv_vm_memory }}"
+        comment: "{{ rhv_vm_comment }} Tower user-job: {{ tower_user_name }}-{{ tower_job_id }}"
+        wait: True
+        nics:
+          - name: "{{ rhv_vm_nic_name }}"
+            profile_name: "{{ rhv_vm_nic_profile }}"
+        cloud_init:
+          host_name: "{{ rhv_vm_name }}"
+
+
+    - name: Revoke the SSO token we generated for provisioning the Virtual Machine
+      ovirt_auth:
+        state: absent
+        ovirt_auth: "{{ ovirt_auth }}"
+

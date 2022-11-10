@@ -1,0 +1,28 @@
+- name: Create Virtual Machine
+  hosts: localhost
+  connection: local
+
+  collections:
+    - redhat.rhv
+
+  tasks:
+
+    - name: Obtain SSO token for authentication to Red Hat Virtualization
+      no_log: false
+      ovirt_auth:
+        url: '{{ lookup("env", "OVIRT_URL") }}'
+        username: '{{ lookup("env", "OVIRT_USERNAME") }}'
+        password: '{{ lookup("env", "OVIRT_PASSWORD") }}'
+        insecure: true
+
+    - name: Delete Virtual Machine
+      ovirt_vm:
+        auth: "{{ ovirt_auth }}"
+        state: absent
+        cluster: "{{ rhv_vm_cluster }}"
+        name: "{{ rhv_vm_name }}"
+
+    - name: Revoke the SSO token we generated for provisioning the Virtual Machine
+      ovirt_auth:
+        state: absent
+        ovirt_auth: "{{ ovirt_auth }}"
