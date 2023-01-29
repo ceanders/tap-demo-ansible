@@ -1,0 +1,21 @@
+ARG EE_BASE_IMAGE=registry.redhat.io/ansible-automation-platform-22/ee-supported-rhel8:latest
+ARG EE_BUILDER_IMAGE=registry.redhat.io/ansible-automation-platform-22/ansible-builder-rhel8:latest
+
+FROM $EE_BASE_IMAGE as galaxy
+ARG ANSIBLE_GALAXY_CLI_COLLECTION_OPTS=
+USER root
+
+ADD _build /build
+WORKDIR /build
+
+
+FROM $EE_BUILDER_IMAGE as builder
+ADD _build/bindep.txt bindep.txt
+RUN ansible-builder introspect --sanitize --user-bindep=bindep.txt --write-bindep=/tmp/src/bindep.txt --write-pip=/tmp/src/requirements.txt
+RUN assemble
+
+FROM $EE_BASE_IMAGE
+USER root
+COPY subversion.py /usr/lib/python3.9/site-packages/ansible/modules/subversion.py
+COPY --from=builder /output/ /output/
+RUN /output/install-from-bindep && rm -rf /output/wheels

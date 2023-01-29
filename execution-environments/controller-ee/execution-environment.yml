@@ -1,0 +1,12 @@
+---
+version: 1
+
+build_arg_defaults:
+  EE_BASE_IMAGE: 'registry.redhat.io/ansible-automation-platform-22/ee-supported-rhel8:latest'
+
+dependencies:
+  system: bindep.txt
+
+additional_build_steps:
+  prepend:
+    - COPY subversion.py /usr/lib/python3.9/site-packages/ansible/modules/subversion.py
