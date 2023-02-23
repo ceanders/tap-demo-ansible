@@ -1,6 +1,4 @@
 - hosts: all
 
-  collections:
-    - redhat.rhel_system_roles
   roles:
      - { role: rhel8_cis }
