@@ -1,0 +1,5 @@
+FROM registry.redhat.io/ansible-automation-platform-22/ee-supported-rhel8:latest
+
+COPY *.crt /etc/pki/ca-trust/source/anchors/
+
+RUN update-ca-trust
