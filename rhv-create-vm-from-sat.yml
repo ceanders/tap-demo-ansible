@@ -20,7 +20,7 @@
         - type: "interface"
           compute_attributes:
             name: "nic1"
-            network: "{{ hostname }}"
+            network: "isolated-capsule"
             interface: "virtio"
         compute_attributes:
             start: "1"
