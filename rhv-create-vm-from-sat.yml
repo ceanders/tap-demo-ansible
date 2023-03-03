@@ -39,6 +39,6 @@
             cluster: "Default"
             start: "1"
             cpus: "{{ rhv_vm_cpu_cores }}"
-            memory_mb: "{{ rhv_vm_memory }}""
+            memory_mb: "{{ rhv_vm_memory }}"
       
 
