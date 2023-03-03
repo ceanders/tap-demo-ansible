@@ -25,6 +25,7 @@
         location: "MainSite/RemoteSite"
         hostgroup: "RemoteRHVNodesRHEL8"
         operatingsystem: "RedHat 8.5"
+        lifecycle_environment: "Dev"
         provision_method: "build"
         build: true
         state: present
