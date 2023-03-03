@@ -31,7 +31,8 @@
         - type: "interface"
           compute_attributes:
             name: "nic1"
-            network: "isolated-capsule"
+            network: "e3f32340-6134-49e7-b609-a9758807df65
+"
             interface: "virtio"
         compute_attributes:
             start: "1"
