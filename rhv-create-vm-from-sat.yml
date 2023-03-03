@@ -20,7 +20,7 @@
         username: "{{ sat_username }}"
         password: "{{ sat_password }}"
         server_url: "{{ sat_url }}"
-        name: "deleteme"
+        name: "deleteme.remote.lab.cedricanderson.name"
         organization: "CedricOrganization"
         location: "MainSite/RemoteSite"
         hostgroup: "RemoteRHVNodesRHEL8"
