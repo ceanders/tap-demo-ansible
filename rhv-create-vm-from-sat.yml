@@ -1,7 +1,15 @@
 - name: Create Virtual Machine using Satellite
   hosts: localhost
   connection: local
+  
+  vars_files:
+    - vault/variables.yml
 
+  vars:        
+    sat_username: "{{ vault_sat_username }}"
+    sat_password: "{{ vault_sat_password }}"
+    sat_url: "{{ vault_sat_url }}"
+    
   collections:
     - redhat.satellite
 
@@ -9,9 +17,9 @@
 
     - name: "Create a VM on specific ovirt network"
       redhat.satellite.host:
-        username:
-        password:
-        server_url:
+        username: "{{ sat_username }}"
+        password: "{{ sat_password }}"
+        server_url: "{{ sat_url }}"
         name: "deleteme"
         organization: "CedricOrganization"
         location: "MainSite/RemoteSite"
