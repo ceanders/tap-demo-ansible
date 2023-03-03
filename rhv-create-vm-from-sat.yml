@@ -1,0 +1,30 @@
+- name: Create Virtual Machine using Satellite
+  hosts: localhost
+  connection: local
+
+  collections:
+    - redhat.satellite
+
+  tasks:
+
+    - name: "Create a VM on specific ovirt network"
+      redhat.satellite.host:
+        name: "deleteme"
+        organization: "CedricOrganization"
+        location: "MainSite/RemoteSite"
+        hostgroup: "RemoteRHVNodesRHEL8"
+        provision_method: "build"
+        build: true
+        state: present
+        interfaces_attributes:
+        - type: "interface"
+          compute_attributes:
+            name: "nic1"
+            network: "{{ hostname }}"
+            interface: "virtio"
+        compute_attributes
+            start: "1"
+            cpus: 2
+            memory_mb: 4096
+      
+
