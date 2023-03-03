@@ -38,7 +38,7 @@
         compute_attributes:
             cluster: "Default"
             start: "1"
-            cpus: {{ rhv_vm_cpu_cores }}
-            memory_mb: {{ rhv_vm_memory }}
+            cpus: "{{ rhv_vm_cpu_cores }}"
+            memory_mb: "{{ rhv_vm_memory }}""
       
 
