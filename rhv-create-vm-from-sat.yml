@@ -37,6 +37,7 @@
 "
             interface: "virtio"
         compute_attributes:
+            cluster: "Default"
             start: "1"
             cpus: 2
             memory_mb: 4096
