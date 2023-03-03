@@ -20,27 +20,25 @@
         username: "{{ sat_username }}"
         password: "{{ sat_password }}"
         server_url: "{{ sat_url }}"
-        name: "deleteme.remote.lab.cedricanderson.name"
-        organization: "CedricOrganization"
-        location: "MainSite/RemoteSite"
-        hostgroup: "RemoteRHVNodesRHEL8"
-        operatingsystem: "RedHat 8.5"
-        lifecycle_environment: "Dev"
+        name: "{{ rhv_vm_name }}"
+        organization: "{{ sat_org }}"
+        location: "{{ sat_location }}"
+        hostgroup: "{{ sat_host_group }}"
         provision_method: "image"
-        image: "rhel8-ib-ksh"
-        compute_resource: "OvirtEngine"
+        image: "{{ rhv_vm_template }}"
+        compute_resource: "{{ sat_compute_resource }}"
         build: true
         state: present
         interfaces_attributes:
         - type: "interface"
           compute_attributes:
             name: "nic1"
-            network: "isolated-capsule"
+            network: "{{ rhv_vm_nic_profile }}"
             interface: "virtio"
         compute_attributes:
             cluster: "Default"
             start: "1"
-            cpus: 2
-            memory_mb: 4096
+            cpus: {{ rhv_vm_cpu_cores }}
+            memory_mb: {{ rhv_vm_memory }}
       
 
