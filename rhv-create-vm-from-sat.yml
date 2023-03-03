@@ -26,7 +26,8 @@
         hostgroup: "RemoteRHVNodesRHEL8"
         operatingsystem: "RedHat 8.5"
         lifecycle_environment: "Dev"
-        provision_method: "build"
+        provision_method: "image"
+        image: "rhel8-minimal"
         build: true
         state: present
         interfaces_attributes:
