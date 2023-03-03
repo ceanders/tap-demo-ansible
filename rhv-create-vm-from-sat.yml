@@ -27,7 +27,8 @@
         operatingsystem: "RedHat 8.5"
         lifecycle_environment: "Dev"
         provision_method: "image"
-        image: "rhel8-minimal"
+        image: "rhel8-ib-ksh"
+        compute_resource: "OvirtEngine"
         build: true
         state: present
         interfaces_attributes:
