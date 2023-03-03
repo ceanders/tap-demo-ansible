@@ -9,6 +9,9 @@
 
     - name: "Create a VM on specific ovirt network"
       redhat.satellite.host:
+        username:
+        password:
+        server_url:
         name: "deleteme"
         organization: "CedricOrganization"
         location: "MainSite/RemoteSite"
