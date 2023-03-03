@@ -27,6 +27,7 @@
         provision_method: "image"
         image: "{{ rhv_vm_template }}"
         compute_resource: "{{ sat_compute_resource }}"
+        operatingsystem: "RedHatCloudInit 8.6"
         build: true
         state: present
         interfaces_attributes:
