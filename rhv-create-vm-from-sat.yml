@@ -33,7 +33,7 @@
         - type: "interface"
           compute_attributes:
             name: "nic1"
-            network: "isolated-dhcp"
+            network: "isolated-capsule"
             interface: "virtio"
         compute_attributes:
             cluster: "Default"
