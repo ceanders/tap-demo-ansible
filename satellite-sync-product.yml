@@ -23,4 +23,4 @@
       server_url: "https://{{ satellite_url }}"
       username: "{{ sat_username }}"
       password: "{{ sat_password }}"
-      organization: "{{ org_id | default('DefaultOrg') }}"
+      organization: "{{ org_id | default('CedricOrganization') }}"
