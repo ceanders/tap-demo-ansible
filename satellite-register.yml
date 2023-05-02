@@ -5,7 +5,7 @@
     - vars/satellite.yml
 
   collections:
-    - redhat_subscription
+    - redhat.rhel_system_roles
 
   tasks:
   
