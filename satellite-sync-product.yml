@@ -2,6 +2,9 @@
   hosts: localhost
   connection: local
   gather_facts: false
+  
+  vars_files:
+    - vars/satellite.yml
 
   collections:
     - redhat.satellite
@@ -12,4 +15,7 @@
   - name: "Sync repository"
     redhat.satellite.repository_sync:
       product: "{{ satellite_product }}"
+      server_url: "http://{{ satellite_url }}"
+      username: "{{ lookup('env','SATELLITE_USERNAME') }}"
+      password: "{{ lookup('env','SATELLITE_PASSWORD') }}"
       organization: "{{ org_id | default('DefaultOrg') }}"
