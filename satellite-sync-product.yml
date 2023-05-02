@@ -11,5 +11,5 @@
 
   - name: "Sync repository"
     redhat.satellite.repository_sync:
-      product: {{ satellite_product }}
+      product: "{{ satellite_product }}"
       organization: "{{ org_id | default('DefaultOrg') }}"
