@@ -25,8 +25,8 @@
   - name: Register system via subscription-mangler
     redhat_subscription:
       state: present
-      activationkey: "{{ activation_key }}"
-      org_id: "{{ org_id }}"
+      activationkey: "{{ activation_key | default('RHEL8 Kickstart') }}"
+      org_id: org_id: "{{ org_id | default('CedricOrganization') }}"
       force_register: true
     throttle: 1
 
