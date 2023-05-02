@@ -20,7 +20,7 @@
   - name: "Sync all repositories associated to product"
     redhat.satellite.repository_sync:
       product: "{{ satellite_product }}"
-      server_url: "http://{{ satellite_url }}"
+      server_url: "https://{{ satellite_url }}"
       username: "{{ sat_username }}"
       password: "{{ sat_password }}"
       organization: "{{ org_id | default('DefaultOrg') }}"
