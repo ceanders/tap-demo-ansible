@@ -1,0 +1,15 @@
+- name: Trigger a Sync of a Product on Red Hat Satellite using credentials stored in AAP
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  collections:
+    - redhat.satellite
+
+  tasks:
+
+
+  - name: "Sync repository"
+    redhat.satellite.repository_sync:
+      product: {{ satellite_product }}
+      organization: "{{ org_id | default('DefaultOrg') }}"
