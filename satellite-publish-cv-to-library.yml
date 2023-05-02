@@ -1,0 +1,27 @@
+- name: After a Sync, publish a new version to the Library but do not promote yet
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  
+  vars_files:
+    - vars/satellite.yml
+    - vault/variables.yml
+    
+  vars:        
+    sat_username: "{{ vault_sat_username }}"
+    sat_password: "{{ vault_sat_password }}"
+
+  collections:
+    - redhat.satellite
+
+  tasks:
+
+
+  - name: Publish a new version of content view to Library from last sync
+    redhat.satellite.content_view_version:
+      content_view: "{{ content_view }}"
+      server_url: "https://{{ satellite_url }}"
+      username: "{{ sat_username }}"
+      password: "{{ sat_password }}"
+      organization: "{{ org_id | default('CedricOrganization') }}"
+      lifecycle_environments: Library
