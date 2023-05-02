@@ -1,0 +1,41 @@
+- name: Register to Red Hat Satellite
+  hosts: all
+
+  vars_files:
+    - vars/satellite.yaml
+
+
+
+  collections:
+    - redhat_subscription
+
+  tasks:
+  
+  - name: Verify operating system
+    assert:
+      that:
+        - ansible_os_family == 'RedHat'
+        - (ansible_distribution_major_version == '7') or (ansible_distribution_major_version == '8')
+        
+  - name: Install satellite certificate
+    yum:
+      name: "https://{{ satellite_url }}/pub/katello-ca-consumer-latest.noarch.rpm"
+      state: present
+      validate_certs: false
+      disable_gpg_check: true
+
+  - name: Register system via subscription-mangler
+    redhat_subscription:
+      state: present
+      activationkey: "{{ activation_key }}"
+      org_id: "{{ org_id }}"
+      force_register: true
+    throttle: 1
+
+  - name: Include repos
+    include_vars: "vars/{{ ansible_distribution + ansible_distribution_major_version }}-repos.yaml"
+
+  - name: Enable repos
+    rhsm_repository:
+      name: "{{ rhsm_enabled_repos }}"
+      state: enabled
