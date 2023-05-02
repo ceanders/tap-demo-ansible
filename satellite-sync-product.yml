@@ -5,6 +5,11 @@
   
   vars_files:
     - vars/satellite.yml
+    - vault/variables.yml
+    
+  vars:        
+    sat_username: "{{ vault_sat_username }}"
+    sat_password: "{{ vault_sat_password }}"
 
   collections:
     - redhat.satellite
@@ -12,10 +17,10 @@
   tasks:
 
 
-  - name: "Sync repository"
+  - name: "Sync all repositories associated to product"
     redhat.satellite.repository_sync:
       product: "{{ satellite_product }}"
       server_url: "http://{{ satellite_url }}"
-      username: "{{ lookup('env','SATELLITE_USERNAME') }}"
-      password: "{{ lookup('env','SATELLITE_PASSWORD') }}"
+      username: "{{ sat_username }}"
+      password: "{{ sat_password }}"
       organization: "{{ org_id | default('DefaultOrg') }}"
