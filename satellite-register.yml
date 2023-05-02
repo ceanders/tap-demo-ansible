@@ -2,9 +2,7 @@
   hosts: all
 
   vars_files:
-    - vars/satellite.yaml
-
-
+    - vars/satellite.yml
 
   collections:
     - redhat_subscription
@@ -33,7 +31,7 @@
     throttle: 1
 
   - name: Include repos
-    include_vars: "vars/{{ ansible_distribution + ansible_distribution_major_version }}-repos.yaml"
+    include_vars: "vars/{{ ansible_distribution + ansible_distribution_major_version }}-repos.yml"
 
   - name: Enable repos
     rhsm_repository:
