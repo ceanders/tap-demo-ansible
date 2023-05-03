@@ -6,4 +6,4 @@
   tasks:
     - name: Reboot a host and wait for test command
       reboot:
-        test_command: "{{ test_command }}"
+        test_command: "{{ test_command | default('whoami') }}"
