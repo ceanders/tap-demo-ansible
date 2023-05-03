@@ -1,0 +1,10 @@
+[db]
+db.lab.cedricanderson.name
+
+[web]
+web1.lab.cedricanderson.name
+web2.lab.cedricanderson.name
+
+[app]
+app1.lab.cedricanderson.name
+app2.lab.cedricanderson.name
