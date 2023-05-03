@@ -1,0 +1,28 @@
+- name: Promote a particular Content View from one Lifecyle Environment to another
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  
+  vars_files:
+    - vars/satellite.yml
+    - vault/variables.yml
+    
+  vars:        
+    sat_username: "{{ vault_sat_username }}"
+    sat_password: "{{ vault_sat_password }}"
+
+  collections:
+    - redhat.satellite
+
+  tasks:
+
+
+  - name: Promote a particular Content View from one Lifecyle Environment to another
+    redhat.satellite.content_view_version:
+      content_view: "{{ content_view }}"
+      server_url: "https://{{ satellite_url }}"
+      username: "{{ sat_username }}"
+      password: "{{ sat_password }}"
+      organization: "{{ org_id | default('CedricOrganization') }}"
+      current_lifecycle_environment: "{{ from_lifecycle_environment }}"
+      lifecycle_environments: "{{ to_lifecycle_environment }}"
